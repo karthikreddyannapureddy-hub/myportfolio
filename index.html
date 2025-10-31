@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Karthik Reddy - Web Developer Portfolio | Expertise in Web Development and C Programming">
+    <meta name="keywords" content="Karthik Reddy, Web Development, C Programming, Portfolio, Software Engineer">
+    <title>Karthik Reddy | Web Developer Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Minimal inline vars - main styling lives in style.css */
+        :root {
+            --bg: #0b0b0c;
+            --text: #f4f6f8;
+            --primary: #7ec8e3;
+            --accent: #ffd700;
+        }
+        body { background: var(--bg); color: var(--text); }
+        /* selection color fallback for browsers that load this inline quickly */
+        ::selection { background: #ff4d4d; color: #fff; }
+        ::-moz-selection { background: #ff4d4d; color: #fff; }
+    </style>
+</head>
+<body>
+    <!-- Header Section with Navigation -->
+    <header>
+        <nav>
+            <div class="logo">
+                <span class="logo-text">KR</span>
+                <span class="logo-dot"></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="menu-btn" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <style>
+        /* Testimonials Styles */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            font-size: 4rem;
+            color: var(--primary-color);
+            opacity: 0.1;
+            font-family: Georgia, serif;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .testimonial-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 1.5rem;
+            border: 3px solid var(--primary-color);
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .testimonial-card:hover .testimonial-avatar img {
+            transform: scale(1.1);
+        }
+
+        .testimonial-card blockquote {
+            font-style: italic;
+            margin: 1rem 0;
+            color: var(--text-color);
+            line-height: 1.6;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-info {
+            text-align: center;
+            margin-top: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-info h4 {
+            color: var(--primary-color);
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .testimonial-info p {
+            color: var(--text-color);
+            opacity: 0.8;
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+        }
+
+        @media (max-width: 768px) {
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+
+            .testimonial-card {
+                padding: 2rem;
+            }
+        }
+
+        /* Enhanced Header Styles */
+        header {
+            background: var(--nav-bg);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-text {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+
+        .logo-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            margin-left: 4px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.5; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--nav-bg);
+                padding: 2rem;
+                text-align: center;
+            }
+        }
+    </style>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="home-content">
+                <div class="intro">
+                    <div class="greeting-box fade-up" style="--delay:0s">
+                        <h1 class="animate-text">Hi — I'm Karthik <span class="emoji emoji-wave" aria-hidden="true">👋</span></h1>
+                        <p class="subtitle">A developer who learns by building — fueled by chai and curiosity ☕</p>
+                        <p class="tagline">I tinker, break things, and fix them better. I build small web projects to learn big ideas.</p>
+                    </div>
+                    <div class="fun-fact-note fade-up" style="--delay:0.12s">
+                        <p>🎯 I'm learning something new every day — sometimes by breaking stuff first, then fixing it better.</p>
+                    </div>
+                    <div class="cta-buttons fade-up" style="--delay:0.09s">
+                        <a href="#projects" class="btn primary-btn pop">See What I've Built <span class="spark">✨</span></a>
+                        <a href="#contact" class="btn secondary-btn pop">Say Hello! <span class="emoji" aria-hidden="true">💬</span></a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="profile-wrapper fade-up" style="--delay:0.14s">
+                        <div class="profile-pic-container">
+                            <img src="profile.jpg" alt="Karthik Reddy" class="profile-pic" width="300" height="300" onerror="this.onerror=null;this.src='https://via.placeholder.com/300?text=Profile'">
+                            <div class="profile-border"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <h2 class="section-title">The Story Behind the Code 📖</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="story-box">
+                        <h3>👨‍💻 The Plot Twist</h3>
+                        <p>You know how some people know they want to code since they were kids? Well, that wasn't me! I discovered my love for programming in college, and now I can't imagine doing anything else. Currently rocking a 6.63 CGPA in my second semester, which might not be perfect, but hey - I'm all about progress over perfection! 📈</p>
+                        
+                        <h3>🎯 The Big Dreams</h3>
+                        <p>I've got my sights set on joining tech giants like Google or Amazon (dream big or go home, right?). Every line of code I write brings me one step closer to that goal. Until then, you'll find me building cool stuff on the web and diving deep into C programming.</p>
+                        
+                        <div class="hobbies-section">
+                            <h3>When I'm Not Coding...</h3>
+                            <ul class="hobby-list">
+                                <li>🎮 Gaming (because sometimes the best solutions come during loading screens)</li>
+                                <li>📚 Reading tech blogs (and occasionally getting lost in Wikipedia rabbit holes)</li>
+                                <li>🧩 Solving puzzles (it's like debugging, but with less crying)</li>
+                                <li>☕ Perfecting my chai-making skills (crucial for those late-night coding sessions)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="education">
+                    <div class="education-card">
+                        <h3>🎓 Academic Life</h3>
+                        <div class="education-item">
+                            <h4>Bachelor's Degree - Second Semester</h4>
+                            <p class="grade">CGPA: 6.63</p>
+                            <p class="motivation">"Every decimal point is a story of late-night studying and countless debug sessions!"</p>
+                        </div>
+                        <div class="current-status">
+                            <p>Status: Actively learning, occasionally breaking things, and always fixing them! 🔧</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Studying Experience (replaces Testimonials) -->
+        <section id="testimonials" class="testimonials fade-up" style="--delay:0.18s">
+            <h2 class="section-title">My Studying Experience <span class="emoji emoji-wave" aria-hidden="true">👋📚</span></h2>
+            <div class="studying-grid testimonials-grid">
+                <div class="study-card testimonial-card pop" style="--delay:0.22s">
+                    <h3>Semester Progress & Focus <span class="emoji" aria-hidden="true">👋</span></h3>
+                    <ul>
+                        <li>Current semester: 2 — CGPA: 6.63</li>
+                        <li>Focus areas: Advanced Java, Data Structures, and Problem Solving (DSA) <span class="emoji emoji-wave" aria-hidden="true">👋👋</span></li>
+                        <li>Study rhythm: daily coding practice plus reading (about 2–3 hours/day)</li>
+                    </ul>
+                </div>
+
+                <div class="study-card testimonial-card pop" style="--delay:0.28s">
+                    <h3>Projects & Hands-on Learning <span class="emoji" aria-hidden="true">🚀</span></h3>
+                    <ul>
+                        <li>Building small web projects to apply new concepts (portfolio, task manager, mock e‑commerce)</li>
+                        <li>Using Git/GitHub for version control — commit early, commit often</li>
+                        <li>Pair programming and code reviews when possible (helps me learn faster) <span class="emoji" aria-hidden="true">👋</span></li>
+                    </ul>
+                </div>
+
+                <div class="study-card testimonial-card pop" style="--delay:0.34s">
+                    <h3>Goals & What’s Next <span class="emoji" aria-hidden="true">🎯</span></h3>
+                    <ul>
+                        <li>Master DSA fundamentals and interview problem patterns</li>
+                        <li>Contribute to open-source and build a few larger projects end-to-end</li>
+                        <li>Keep learning every day — small wins add up! <span class="emoji emoji-wave" aria-hidden="true">👋</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills">
+            <h2 class="section-title">My Digital Toolbox 🛠️</h2>
+            <div class="skills-content">
+                <div class="skill-category">
+                    <h3>Cool Things I Can Do! ✨</h3>
+                    <div class="skill-grid">
+                        <div class="skill-item" data-aos="fade-up">
+                            <div class="skill-icon">
+                                <svg viewBox="0 0 50 50" class="skill-svg">
+                                    <rect x="10" y="10" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2"/>
+                                    <text x="25" y="30" text-anchor="middle" fill="currentColor" class="skill-icon-text">&lt;/&gt;</text>
+                                </svg>
+                            </div>
+                            <h4>Web Development</h4>
+                            <p class="skill-desc">HTML, CSS, and JavaScript are my jam! I love creating websites that make people go "Wow!"</p>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 85%">
+                                    <span class="skill-tooltip">85% - Always learning!</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-aos="fade-up">
+                            <div class="skill-icon">
+                                <svg viewBox="0 0 50 50" class="skill-svg">
+                                    <circle cx="25" cy="25" r="15" fill="none" stroke="currentColor" stroke-width="2"/>
+                                    <text x="25" y="30" text-anchor="middle" fill="currentColor" class="skill-icon-text">C</text>
+                                </svg>
+                            </div>
+                            <h4>Java Programming</h4>
+                            <p class="skill-desc">Pointers? Arrays? Structures? We're basically best friends now!</p>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 80%">
+                                    <span class="skill-tooltip">80% - Getting better daily!</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-aos="fade-up">
+                            <div class="skill-icon">
+                                <svg viewBox="0 0 50 50" class="skill-svg">
+                                    <path d="M15,15 L35,15 L35,35 L15,35 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M20,20 L30,30 M30,20 L20,30" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <h4>Problem Solving(DSA)</h4>
+                            <p class="skill-desc">Give me a puzzle, and I won't rest until it's solved! My rubber duck agrees 🦆</p>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 90%">
+                                    <span class="skill-tooltip">90% - My superpower! ⚡</span>
+                                </div>
+                            </div>
+                        </div>
