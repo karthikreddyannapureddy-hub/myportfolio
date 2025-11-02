@@ -1,72 +1,191 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Smooth scrolling for navigation links
-    const navLinks = document.querySelectorAll('nav a');
-    const menuBtn = document.querySelector('.menu-btn');
-    const navMenu = document.querySelector('.nav-links');
+/* 
+   Interactive Portfolio Elements
+   By Karthik Reddy
+   
+   A collection of handcrafted animations and interactions
+   that bring my portfolio to life while keeping it smooth
+   and accessible.
+*/
 
-    // Mobile menu toggle
-    menuBtn?.addEventListener('click', () => {
-        menuBtn.classList.toggle('active');
-        navMenu.classList.toggle('active');
+document.addEventListener('DOMContentLoaded', () => {
+    initializePortfolio();
+});
+
+function initializePortfolio() {
+    // Core Functionality
+    setupNavigation();
+    setupAnimations();
+    setupProjectCards();
+    setupContactForm();
+    
+    // Enhanced Features
+    setupTypewriter();
+    setupSkillBars();
+    setupScrollProgress();
+}
+
+// Smooth Navigation System
+function setupNavigation() {
+    const nav = {
+        menu: document.querySelector('.nav-links'),
+        button: document.querySelector('.menu-btn'),
+        links: document.querySelectorAll('nav a')
+    };
+
+    // Mobile Menu Toggle
+    nav.button?.addEventListener('click', () => {
+        nav.button.classList.toggle('active');
+        nav.menu.classList.toggle('active');
+        document.body.style.overflow = nav.menu.classList.contains('active') ? 'hidden' : '';
     });
 
-    // Smooth scroll navigation
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
+    // Enhanced Smooth Scrolling
+    nav.links.forEach(link => {
+        link.addEventListener('click', e => {
             e.preventDefault();
+            const target = document.querySelector(link.getAttribute('href'));
             
-            const targetId = this.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
-            
-            if (targetSection) {
-                targetSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
+            if (target) {
+                // Close Mobile Menu
+                nav.menu.classList.remove('active');
+                nav.button.classList.remove('active');
+                document.body.style.overflow = '';
+
+                // Smooth Scroll with Offset
+                const headerOffset = 60;
+                const elementPosition = target.getBoundingClientRect().top;
+                const offsetPosition = elementPosition - headerOffset;
+
+                window.scrollBy({
+                    top: offsetPosition,
+                    behavior: 'smooth'
                 });
 
-                // Close mobile menu if open
-                menuBtn.classList.remove('active');
-                navMenu.classList.remove('active');
+                // Update URL without jump
+                history.pushState(null, '', link.getAttribute('href'));
             }
         });
     });
+}
 
-    // Scroll reveal animations
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate');
-            }
+// Scroll-based Animations
+function setupAnimations() {
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        },
+        { threshold: 0.2 }
+    );
+
+    // Observe elements with animation classes
+    document.querySelectorAll('.fade-up, .pop').forEach(el => observer.observe(el));
+}
+
+// Interactive Project Cards
+function setupProjectCards() {
+    const cards = document.querySelectorAll('.project-card');
+    
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.classList.add('hover');
         });
-    }, {
-        threshold: 0.1
-    });
 
-    // Observe all elements with data-aos attribute
-    document.querySelectorAll('[data-aos]').forEach((element) => {
-        observer.observe(element);
-    });
-
-    // Contact form handling
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            // Add your form submission logic here
-            alert('Thank you for your message! I will get back to you soon.');
-            this.reset();
+        card.addEventListener('mouseleave', () => {
+            card.classList.remove('hover');
         });
-    }
+    });
+}
 
-    // Skill bars animation
-    const skillBars = document.querySelectorAll('.skill-bar');
-    skillBars.forEach(bar => {
-        const level = bar.querySelector('.skill-level');
-        if (level) {
-            level.style.width = '0%';
+// Contact Form with Feedback
+function setupContactForm() {
+    const form = document.getElementById('contact-form');
+    if (!form) return;
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const button = form.querySelector('button');
+        
+        try {
+            button.innerHTML = '✉️ Sending...';
+            button.disabled = true;
+
+            // Simulate sending (replace with actual API call)
+            await new Promise(r => setTimeout(r, 1000));
+            
+            button.innerHTML = '✅ Message Sent!';
+            form.reset();
+            
             setTimeout(() => {
-                level.style.width = level.getAttribute('data-level') || '0%';
-            }, 500);
+                button.innerHTML = 'Send Message';
+                button.disabled = false;
+            }, 2000);
+        } catch (err) {
+            button.innerHTML = '❌ Please Try Again';
+            button.disabled = false;
         }
+    });
+}
+
+// Typewriter Effect
+function setupTypewriter() {
+    const elements = document.querySelectorAll('.animate-text');
+    
+    elements.forEach(element => {
+        const text = element.textContent;
+        element.textContent = '';
+        
+        let i = 0;
+        function type() {
+            if (i < text.length) {
+                element.textContent += text.charAt(i);
+                i++;
+                setTimeout(type, Math.random() * 100 + 50);
+            }
+        }
+
+        // Start typing when visible
+        new IntersectionObserver((entries, observer) => {
+            if (entries[0].isIntersecting) {
+                type();
+                observer.disconnect();
+            }
+        }).observe(element);
+    });
+}
+
+// Animated Skill Bars
+function setupSkillBars() {
+    const bars = document.querySelectorAll('.skill-level');
+    
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const bar = entry.target;
+                    bar.style.width = bar.dataset.level || '0%';
+                }
+            });
+        },
+        { threshold: 0.3 }
+    );
+
+    bars.forEach(bar => observer.observe(bar));
+}
+
+// Scroll Progress Indicator
+function setupScrollProgress() {
+    const indicator = document.createElement('div');
+    indicator.className = 'scroll-progress';
+    document.body.appendChild(indicator);
+
+    window.addEventListener('scroll', () => {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        indicator.style.width = scrolled + '%';
     });
 });

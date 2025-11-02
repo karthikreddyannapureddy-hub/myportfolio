@@ -1,23 +1,30 @@
-/* Dark Theme stylesheet for portfolio
-   - Permanent dark mode
-   - High contrast text
-   - Red selection color when copying/selecting text
-   - Covers layout and components used in myportfolio.html
+/* Portfolio Theme by Karthik Reddy
+   A clean, modern dark theme that emphasizes content and readability
+   while maintaining a professional aesthetic.
+   
+   Color Palette:
+   - Deep Space (#0b0b0c) - Main background
+   - Ocean Blue (#7ec8e3) - Primary accent
+   - Soft Gold (#ffd700) - Secondary accent
+   - Paper White (#f4f6f8) - Text
 */
 
 :root {
-  --bg: #0b0b0c; /* page background */
-  --card: #151516; /* card / panel background */
-  /* Backwards-compatible aliases (used by inline CSS in HTML) */
+  /* Core Colors */
+  --bg: #0b0b0c;
+  --card: #151516;
+  --text: #f4f6f8;
+  --muted-text: #bfc6cc;
+  --primary: #7ec8e3;
+  --accent: #ffd700;
+  
+  /* UI Elements */
   --card-bg: var(--card);
   --primary-color: var(--primary);
   --text-color: var(--text);
   --accent-color: var(--accent);
-  --nav-bg: rgba(10,10,10,0.65);
+  --nav-bg: rgba(10,10,10,0.85);
   --muted-card: #1a1a1a;
-  --text: #f4f6f8; /* primary text */
-  --muted-text: #bfc6cc; /* secondary text */
-  --primary: #7ec8e3; /* accent */
   --accent: #ffd700; /* gold accent */
   --danger: #ff4d4d; /* selection/copy color */
   --border: #262626;

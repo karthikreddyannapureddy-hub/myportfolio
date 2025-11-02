@@ -3,26 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Karthik Reddy - Web Developer Portfolio | Expertise in Web Development and Java Programming">
-    <meta name="keywords" content="Karthik Reddy, Web Development, C Programming, Portfolio, Software Engineer">
-    <title>Karthik Reddy | Full stack Developer Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta name="description" content="Hi, I'm Karthik Reddy - A passionate full-stack developer crafting clean, user-friendly web experiences. Explore my journey, projects, and development philosophy.">
+    <meta name="keywords" content="Karthik Reddy, Full Stack Developer, Web Development, Java, DSA, Portfolio, UI/UX, Student Developer">
+    <title>Karthik Reddy | Creative Developer & Problem Solver</title>
+    
+    <!-- Optimized Font Loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons and Styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    
+    <!-- Critical Path CSS -->
     <style>
-        /* Minimal inline vars - main styling lives in style.css */
+        /* Essential styles for immediate render */
         :root {
             --bg: #0b0b0c;
             --text: #f4f6f8;
             --primary: #7ec8e3;
             --accent: #ffd700;
         }
-        body { background: var(--bg); color: var(--text); }
-        /* selection color fallback for browsers that load this inline quickly */
-        ::selection { background: #ff4d4d; color: #fff; }
-        ::-moz-selection { background: #ff4d4d; color: #fff; }
+        
+        body { 
+            background: var(--bg); 
+            color: var(--text);
+            opacity: 0;
+            animation: fadeIn 0.5s ease-in forwards;
+        }
+        
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        
+        ::selection { background: var(--primary); color: var(--bg); }
+        ::-moz-selection { background: var(--primary); color: var(--bg); }
     </style>
 </head>
 <body>
@@ -30,7 +46,7 @@
     <header>
         <nav>
             <div class="logo">
-                <span class="logo-text">KR's portpolio</span>
+                <span class="logo-text">KR's portpholio</span>
                 <span class="logo-dot"></span>
             </div>
             <ul class="nav-links">
